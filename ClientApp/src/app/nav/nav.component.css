@@ -1,0 +1,44 @@
+
+.dropdown-toggle, .dropdown-item {
+    cursor: pointer;
+}
+
+img {
+    max-height: 50px;
+    border: 2px solid white;
+    display: inline;
+}
+/* Custom CSS for Navbar */
+.navbar-brand {
+    font-size: 30px;
+}
+
+.navbar-nav .nav-link {
+    font-size: 20px;
+}
+
+.dropdown-toggle {
+    color: white !important;
+}
+
+.dropdown-menu {
+    background-color: #343a40; /* Dark background color */
+}
+
+.dropdown-item {
+    color: white; /* Text color */
+}
+
+/* Custom CSS for Login Form */
+.form-control {
+    margin-right: 10px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #fff; 
+    border-radius: 10px;
+    cursor: pointer;
+}
+.error{
+    margin-right: 500px
+}

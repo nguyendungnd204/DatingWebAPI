@@ -1,0 +1,44 @@
+/* Form style */
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #FF6B6B; /* Màu nền hồng cam */
+    border-radius: 10px;
+    border: 2px solid #FFC947; /* Thêm viền ngoài cho form */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #FFC947; /* Màu viền input */
+    border-radius: 5px;
+    background-color: transparent; /* Độ trong suốt cho ô input */
+    color: #fff; /* Màu chữ */
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+    outline: none;
+    border-color: #FFC947; /* Màu viền input khi focus */
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px; /* Khoảng cách giữa các nút */
+    background-color: #FFC947; /* Màu nút */
+    color: #fff; /* Màu chữ nút */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #FF6B6B; /* Màu nút khi hover */
+}
