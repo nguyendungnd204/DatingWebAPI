@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Drawing.Drawing2D;
 
+
 namespace DatingApp.Controllers
 {
     public class BuggyController : BaseApiController
@@ -18,7 +19,7 @@ namespace DatingApp.Controllers
         [HttpGet("auth")]
         public ActionResult<string> GetSecret()
         {
-            return "ki lum me";
+            return "Da fix duoc";
         }
 
         [HttpGet("not-found")]

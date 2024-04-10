@@ -4,12 +4,14 @@ import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FormsModule, FormsModule, CommonModule, HttpClientModule,ToastrModule],
+  imports: [FormsModule, CommonModule, HttpClientModule,ToastrModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })

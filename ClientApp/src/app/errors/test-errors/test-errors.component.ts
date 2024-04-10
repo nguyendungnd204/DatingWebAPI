@@ -1,13 +1,14 @@
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ValidationErrors } from '@angular/forms';
 import { response } from 'express';
+import { HomeComponent } from '../../home/home.component';
 
 @Component({
   selector: 'app-test-errors',
   standalone: true,
-  imports: [NgIf, NgFor],
+  imports: [CommonModule,HomeComponent],
   templateUrl: './test-errors.component.html',
   styleUrl: './test-errors.component.css'
 })

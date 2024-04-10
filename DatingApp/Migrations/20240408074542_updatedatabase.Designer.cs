@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DatingApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240328090338_UpdateUserandPhotos")]
-    partial class UpdateUserandPhotos
+    [Migration("20240408074542_updatedatabase")]
+    partial class updatedatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -85,7 +85,7 @@ namespace DatingApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AppUserId")
+                    b.Property<int>("AppUserId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsMain")
@@ -106,9 +106,13 @@ namespace DatingApp.Migrations
 
             modelBuilder.Entity("DatingApp.Models.Photo", b =>
                 {
-                    b.HasOne("DatingApp.Models.AppUser", null)
+                    b.HasOne("DatingApp.Models.AppUser", "AppUser")
                         .WithMany("Photos")
-                        .HasForeignKey("AppUserId");
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("DatingApp.Models.AppUser", b =>

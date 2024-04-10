@@ -1,19 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { User } from '../_models/_user';
+import { User } from '../_models/user';
 import { ReplaySubject } from 'rxjs';
+import { config } from '../app.config';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-  setCurrentUser(user: User | null) {
-    throw new Error('Method not implemented.');
+  currentUser: any
+  setCurrentUser(user: any) {
+    this.currentUser = user;
   }
-  baseUrl = 'http://localhost:5231/api/';
-  private currentUserSource = new ReplaySubject<User | null>(1);
+  baseUrl = config.apiUrl
+  private currentUserSource = new ReplaySubject<User | null>();
   currentUser$ = this.currentUserSource.asObservable();
 
   constructor(private  http: HttpClient) { }
@@ -26,6 +28,7 @@ export class AccountService {
           localStorage.setItem('user', JSON.stringify(user));
           this.currentUserSource.next(user); // Emit user to currentUserSource
         }
+        
       })
     );
   }
@@ -38,6 +41,7 @@ export class AccountService {
           localStorage.setItem('user', JSON.stringify(user));
           this.currentUserSource.next(user);
         }
+       
       })
     )
   }

@@ -3,21 +3,32 @@ import { RouterModule, provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withFetch } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+
+
+export const config = {
+  apiUrl: 'http://localhost:5231/api/'
+};
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),RouterModule, provideClientHydration(), provideHttpClient(), 
+  providers: [provideHttpClient(withFetch()),provideRouter(routes),RouterModule, provideClientHydration(), provideHttpClient(), 
   provideToastr(
     {
     closeButton: true, positionClass: 'toast-bottom-right',
-    timeOut: 1000, preventDuplicates:true
+    timeOut: 1500, preventDuplicates:true,
+    
     }
 
-  ),
-  {
+  ),{
     provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi:true
+    
+  },{
+    provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true
   }
+  
 ]
+
 };
