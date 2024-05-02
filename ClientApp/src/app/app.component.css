@@ -1,0 +1,25 @@
+.ball-8bits {
+    position: relative; /* Đảm bảo vị trí tương đối để các quả bóng không bị xê dịch */
+    display: inline-block; /* Hiển thị như một khối inline để các quả bóng được xếp chồng lên nhau */
+  }
+  
+  /* Định nghĩa hiệu ứng cho mỗi quả bóng */
+  .ball-8bits div {
+    width: 24px; /* Đường kính của quả bóng */
+    height: 24px; /* Chiều cao của quả bóng */
+    background: #333; /* Màu nền của quả bóng */
+    border-radius: 100%; /* Tạo hình dạng tròn cho quả bóng */
+    position: absolute; /* Đảm bảo vị trí tuyệt đối để điều khiển vị trí của từng quả bóng */
+    animation: ball-8bits-animation 1.4s infinite ease-in-out; /* Áp dụng hiệu ứng chuyển động cho quả bóng */
+  }
+  
+  /* Định nghĩa hiệu ứng chuyển động cho mỗi quả bóng */
+  @keyframes ball-8bits-animation {
+    0%, 100% {
+      transform: scale(1); /* Kích thước ban đầu của quả bóng */
+    }
+    50% {
+      transform: scale(0.6); /* Kích thước nhỏ nhất của quả bóng */
+    }
+  }
+  

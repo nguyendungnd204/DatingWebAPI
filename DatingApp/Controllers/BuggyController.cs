@@ -15,11 +15,12 @@ namespace DatingApp.Controllers
         {
             _context = context;
         }
+        
         [Authorize]
         [HttpGet("auth")]
         public ActionResult<string> GetSecret()
         {
-            return "Da fix duoc";
+            return Ok("Da fix duoc");
         }
 
         [HttpGet("not-found")]

@@ -36,7 +36,7 @@ namespace DatingApp.Data
         {
             return await _context.Users
                 .Include(p=>p.Photos)
-                .FirstOrDefaultAsync(x=>x.Username==username);
+                .SingleOrDefaultAsync(x=>x.Username == username);
         }
 
         public async Task<bool> SaveAllAsync()

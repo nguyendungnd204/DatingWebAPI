@@ -15,7 +15,7 @@ namespace DatingApp.Controllers
         private readonly ApplicationDbContext _context;
 
         private readonly ITokenService _tokenService;
-        private object user;
+        
 
         public AccountController(ApplicationDbContext context, ITokenService tokenService )
         {

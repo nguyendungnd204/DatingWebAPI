@@ -6,6 +6,7 @@ import { User } from '../_models/user';
 import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ToastrModule } from 'ngx-toastr';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 
 
@@ -17,26 +18,25 @@ import { ToastrModule } from 'ngx-toastr';
   standalone:true
 })
 export class NavComponent implements OnInit {
-  model: any={};
-  constructor(public accountService: AccountService, private router: Router, private toastr: ToastrService ) {
-  }
-  ngOnInit(): void {  
+  model: any = {}
+
+  constructor(public accountService: AccountService, private router: Router, 
+    private toastr: ToastrService) { }
+
+  ngOnInit(): void {
   }
 
   login() {
-    this.accountService.login(this.model).subscribe(
-       {
-        next : response => this.router.navigateByUrl('/members'),
-          
-        error : error => this.toastr.error(error.error)
+    this.accountService.login(this.model).subscribe({
+      next: _ => {
+        this.router.navigateByUrl('/members');
+        this.model = {}
       }
-    )
+    })
   }
 
   logout() {
     this.accountService.logout();
     this.router.navigateByUrl('/');
   }
-
-  
 }

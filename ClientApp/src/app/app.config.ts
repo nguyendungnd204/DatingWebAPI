@@ -7,6 +7,8 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withFetch } from '@angular/common
 import { provideToastr } from 'ngx-toastr';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { loadingInterceptor } from './_interceptors/loading.interceptor';
 
 
 export const config = {
@@ -27,8 +29,11 @@ export const appConfig: ApplicationConfig = {
     
   },{
     provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi:true
-  }
-  
+  },
+  {
+    provide: HTTP_INTERCEPTORS, useClass: loadingInterceptor, multi:true
+  },
+   
 ]
 
 };

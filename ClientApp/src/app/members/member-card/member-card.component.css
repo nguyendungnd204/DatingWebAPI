@@ -1,36 +1,57 @@
-.card:hover img{
-    transform: scale(1.2, 1.2);
+/* Sử dụng chọn lớp để xác định các thuộc tính của biểu tượng heart */
+
+.card:hover img {
+    transform: scale(1.2);
     transition-duration: 500ms;
-    transition-timing-function:ease-out;
+    transition-timing-function: ease-out;
     opacity: 0.7;
-
+    
+    
 }
 
-.card img{
-    transform: scale(1.0, 1.0);
+.card img {
+    transform: scale(1.0);
     transition-duration: 500ms;
-    transition-timing-function:ease-out;
+    transition-timing-function: ease-out;
 }
 
-.card-img-wraper{
-    overflow:hidden;
+.card-img-wrapper {
+    overflow: hidden;
     position: relative;
 }
-.member-icons{
+
+.member-icons {
     position: absolute;
     bottom: -30%;
     right: 0;
     height: 0;
-    margin-right: auto;
-    margin-left: auto;
+    left: 0;
     opacity: 0;
 }
 
-.card-img-wraper:hover .member-icons{
-    bottom: 0;
+.card-img-wrapper:hover .member-icons {
+    bottom: 10%;
     opacity: 1;
-
+    
+    
 }
-.animate{
+
+.animate {
     transition: all 0.3s ease-in-out;
+}
+
+/* Đặt màu sắc và kích thước cho biểu tượng heart */
+.card .fa.fa-heart {
+    color: red; /* Màu sắc của biểu tượng heart */
+    font-size: 24px; /* Kích thước của biểu tượng heart */
+}
+
+.card .fa.fa-user {
+    color: red; /* Màu sắc của biểu tượng user */
+    font-size: 24px; /* Kích thước của biểu tượng user */
+}
+
+.card .fa.fa-envelope {
+    color: red; /* Màu sắc của biểu tượng envelope */
+    font-size: 24px; /* Kích thước của biểu tượng envelope */
 }

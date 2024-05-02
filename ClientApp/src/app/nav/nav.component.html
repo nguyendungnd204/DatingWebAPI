@@ -1,9 +1,10 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
   <div class="container">
-    <a class="navbar-brand" href='/' routerLinkActive="active">Dating App</a>
-
-    <ul class="navbar-nav mr-auto mb-2 mb-md-0">
-      <ng-container *ngIf="accountService.currentUser$ | async">
+    <div class="container-dating">
+      <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="router-link-active" >Dating App</a>
+      
+      <a class="nav-link error" [routerLink]="['/errors']" routerLinkActive="router-link-active"  >Errors</a>
+      <ul class="navbar-nav mr-auto mb-2 mb-md-0" *ngIf="accountService.currentUser$ | async">
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/members']" routerLinkActive="router-link-active" >Matches</a>
         </li>
@@ -16,19 +17,18 @@
         <li *appHasRole="['Admin', 'Moderator']" class="nav-item">
           <a class="nav-link" [routerLink]="['/admin']" routerLinkActive="router-link-active" >Admin</a>
         </li>
-      </ng-container>
-      <li class="nav-item">
-        <a class="nav-link error" [routerLink]="['/errors']" routerLinkActive="router-link-active"  >Errors</a>
-      </li>
-      
+       
     </ul>
+      
+    </div>
+    
+   
 
-    <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+    <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" >
       <img src="{{user.photoUrl || './assets/user.png'}}" alt="user photo">
-      <a class="dropdown-toggle text-light text-decoration-none ms-2" dropdownToggle>Welcome {{user.knownAs|titlecase}}</a>
-      <div class="dropdown-menu" *dropdownMenu>
+      <a class="dropdown-toggle text-light text-decoration-none ms-2" >Welcome {{user.knowAs|titlecase}}</a>
+      <div class="dropdown-menu" >
         <a [routerLink]="['/member/edit']" routerLinkActive="router-link-active"  class="dropdown-item">Edit Profile</a>
-        <div class="dropdown-divider"></div>
         <a class="dropdown-item" (click)="logout()">Logout</a>
       </div>
     </div>

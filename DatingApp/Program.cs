@@ -22,6 +22,7 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var config = builder.Configuration;
 
 builder.Services.AddControllers();
 builder.Services.AddCors();
@@ -57,9 +58,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //dbContext.SaveChanges();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IPhotoService, PhotoService>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
 
-
-builder.Services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 
 
 var app = builder.Build();
@@ -76,7 +78,7 @@ app.UseMiddleware<ExceptionMiddleware>();
 // nguoi dung phai xac thuc truoc khi uy quyen, kiem ra xem nguoi dung da dang nhap hay chua 
 app.UseRouting();
 app.UseAuthorization();
-app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin() );
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
